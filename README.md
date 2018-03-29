@@ -1,6 +1,16 @@
-## Grapher & GraphQL Schema Directives
+# Grapher and GraphQL Schema Directives
 
-Wouldn't it be sweet if we could setup our collections and links in our GraphQL type definitions? Yes, it would be very sweet.
+Wouldn't it be sweet if we could setup our collections and links in our GraphQL type definitions?
+
+Yes, it would be very sweet.
+
+## Install
+
+```
+meteor add cultofcoders:grapher-schema-directives
+```
+
+## Sample
 
 ```js
 type User @mongo(name: "users") {
@@ -19,12 +29,15 @@ type Post @mongo(name: "posts") {
 ```
 
 In the background, the schema directives analyze our types and create propper links, when we have a `field` present,
-that's going to be a main link, that's the collection we are going to store it in, when we have `to` present, that's going to be an inversed link.
+that's going to be a main link, that's the collection we are going to store it in, when we have `to` present,
+that's going to be an inversed link.
 
 Each `ObjectType` needs to have the propper `@mongo` directive to work.
 
-The `@map` directive makes a database field be aliased. The reason for this is that when we query with Grapher's GraphQL abilities
-to properly adapt that field to the correspondant db field. In the backscene, we basically have a `reducer`.
+The `@map` directive makes a database field be aliased. The reason for this is that when we query with Grapher's
+GraphQL abilities to properly adapt that field to the correspondant db field. In the backscene, we basically have a `reducer`.
+
+## Usage
 
 ```js
 import {
