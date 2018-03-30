@@ -73,6 +73,7 @@ export default class LinkDirective extends SchemaDirectiveVisitor {
         config = {
           type: isArrayField ? 'many' : 'one',
           field: args.field,
+          index: true,
         };
       } else {
         throw new Meteor.Error(

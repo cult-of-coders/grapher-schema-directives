@@ -34,6 +34,8 @@ In the background, the schema directives analyze our types and create propper li
 that's going to be a main link, that's the collection we are going to store it in, when we have `to` present,
 that's going to be an inversed link.
 
+Direct fields are automatically indexed by default.
+
 Each `ObjectType` needs to have the propper `@mongo` directive to work.
 
 The `@map` directive makes a database field be aliased. The reason for this is that when we query with Grapher's
@@ -54,3 +56,18 @@ import {
 ```
 
 If you are using `cultofcoders:apollo` package, this is done by default, you don't have to care about it.
+
+This is a very quick way to setup your schema, however if you need to use denormalisation abilities, and you don't want
+to give up the sugary directives above:
+
+```js
+import { db } from 'meteor/cultofcoders:grapher';
+
+Meteor.startup(() => {
+  const userCommentLinker = db.users.getLinker('comments');
+  Object.assign(userCommentLinker.linkConfig, {
+    denormalize: {},
+  });
+  userCommentLinker._initDenormalization();
+});
+```
