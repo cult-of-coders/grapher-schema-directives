@@ -53,41 +53,4 @@ import {
 // Add them to your graphql servers
 ```
 
-If you are using `cultofcoders:apollo` package:
-
-```js
-import { load } from 'graphql-load';
-import { Config } from 'meteor/cultofcoders:apollo';
-import {
-  directives,
-  directiveDefinitions,
-} from 'meteor/cultofcoders:grapher-schema-directives';
-
-load({ typeDefs: directiveDefinitions });
-
-Config.GRAPHQL_SCHEMA_DIRECTIVES = {
-  ...directives,
-};
-```
-
-Another quick trick you could use:
-
-```js
-import { db } from 'meteor/cultofcoders:grapher';
-import { Config } from 'meteor/cultofcoders:apollo';
-
-Object.assign(Config.CONTEXT, { db });
-```
-
-Which basically allows you to do:
-
-```js
-export default {
-  Query: {
-    users(_, args, context, ast) {
-      // Where db.`mongoCollectionName`
-      return context.db.users.astToQuery(ast).fetch();
-    },
-  },
-};
-```
+If you are using `cultofcoders:apollo` package, this is done by default, you don't have to care about it.

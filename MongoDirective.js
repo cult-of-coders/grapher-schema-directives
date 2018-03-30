@@ -22,8 +22,6 @@ export function setupMongoDirective(type, args) {
 
   type._mongoCollectionName = name;
 
-  console.log(type.toString());
-
   let collection = Mongo.Collection.get(name);
   if (!collection) {
     collection = new Mongo.Collection(name);
