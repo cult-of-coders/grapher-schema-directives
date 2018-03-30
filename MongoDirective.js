@@ -22,7 +22,12 @@ export function setupMongoDirective(type, args) {
 
   type._mongoCollectionName = name;
 
-  if (!Mongo.Collection.get(name)) {
-    new Mongo.Collection(name);
+  console.log(type.toString());
+
+  let collection = Mongo.Collection.get(name);
+  if (!collection) {
+    collection = new Mongo.Collection(name);
   }
+
+  collection.setTypename(type.toString());
 }

@@ -6,6 +6,7 @@ export default `
   directive @link(
     field: String
     to: String
+    meta: Boolean
   ) on FIELD_DEFINITION
 
   directive @map(

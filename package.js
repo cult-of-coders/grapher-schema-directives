@@ -1,14 +1,16 @@
 Package.describe({
   name: 'cultofcoders:grapher-schema-directives',
-  version: '0.1.0',
+  version: '0.1.1',
 
   // Brief, one-line summary of the package.
   summary: 'Grapher and GraphQL Schema Directives',
 
-  longDescription: '',
-
   // URL to the Git repository containing the source code for this package.
   git: 'https://github.com/cult-of-coders/grapher-schema-directives',
+
+  // By default, Meteor will default to using README.md for documentation.
+  // To avoid submitting documentation, set this field to null.
+  documentation: 'README.md',
 });
 
 Package.onUse(function(api) {

@@ -12,6 +12,8 @@ meteor add cultofcoders:grapher-schema-directives
 
 ## Sample
 
+Where you define your types:
+
 ```js
 type User @mongo(name: "users") {
     comments: [Comment] @link(to: "user")
