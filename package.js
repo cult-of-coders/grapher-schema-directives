@@ -1,6 +1,6 @@
 Package.describe({
   name: 'cultofcoders:grapher-schema-directives',
-  version: '0.1.4',
+  version: '0.1.5',
 
   // Brief, one-line summary of the package.
   summary: 'Grapher and GraphQL Schema Directives',
