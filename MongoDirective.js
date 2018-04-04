@@ -26,8 +26,4 @@ export function setupMongoDirective(type, args) {
   if (!collection) {
     collection = new Mongo.Collection(name);
   }
-
-  if (collection.setTypename) {
-    collection.setTypename(type.toString());
-  }
 }
