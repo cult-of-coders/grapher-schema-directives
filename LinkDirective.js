@@ -83,6 +83,11 @@ export default class LinkDirective extends SchemaDirectiveVisitor {
       }
     }
 
+    // Check if a link already exists. 
+    // This should be beefed up to check all the ways it could be a different link.
+    if (thisCollection.__links && thisCollection.__links[field.name]) {
+      return
+    };
     thisCollection.addLinks({
       [field.name]: {
         collection: referencedCollection,
