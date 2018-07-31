@@ -1,5 +1,5 @@
 import { SchemaDirectiveVisitor } from 'graphql-tools';
-import { GraphQLList, GraphQLObjectType } from 'graphql/type';
+import { GraphQLList, GraphQLObjectType, GraphQLNonNull } from 'graphql/type';
 import { Mongo } from 'meteor/mongo';
 import { setupMongoDirective } from './MongoDirective';
 
