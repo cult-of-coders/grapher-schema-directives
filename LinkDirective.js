@@ -26,11 +26,15 @@ export default class LinkDirective extends SchemaDirectiveVisitor {
       referencedType = field.type;
     }
 
-    if (!(referencedType instanceof GraphQLObjectType)) {
-      throw new Meteor.Error(
-        'invalid-type',
-        `You are trying to attach a link on a invalid type. @link directive only works with GraphQLObjectType `
-      );
+    if (referencedType instanceof GraphQLNonNull) {
+      referencedType = referencedType.ofType;
+    } else {
+      if (!(referencedType instanceof GraphQLObjectType)) {
+        throw new Meteor.Error(
+          'invalid-type',
+          `You are trying to attach a link on a invalid type. @link directive only works with GraphQLObjectType `
+        );
+      }
     }
 
     let referencedCollectionName = referencedType._mongoCollectionName;
