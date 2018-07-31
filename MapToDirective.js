@@ -2,6 +2,11 @@ import { SchemaDirectiveVisitor } from 'graphql-tools';
 import { GraphQLScalarType, GraphQLObjectType } from 'graphql/type';
 import { Mongo } from 'meteor/mongo';
 
+function resolve(path, obj) {
+  return path.split('.').reduce(function(prev, curr) {
+    return prev ? prev[curr] : undefined;
+  }, obj || self);
+}
 export default class MapToDirective extends SchemaDirectiveVisitor {
   visitFieldDefinition(field, details) {
     const { objectType } = details;
@@ -34,7 +39,7 @@ export default class MapToDirective extends SchemaDirectiveVisitor {
           [args.to]: 1,
         },
         reduce(obj) {
-          return obj[args.to];
+          return resolve(args.to, object);
         },
       },
     });
