@@ -6,7 +6,9 @@ export default `
   directive @link(
     field: String
     to: String
-    meta: Boolean
+    metadata: Boolean
+    unique: Boolean
+    autoremove: Boolean
   ) on FIELD_DEFINITION
 
   directive @map(

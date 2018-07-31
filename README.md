@@ -30,16 +30,21 @@ type Post @mongo(name: "posts") {
 }
 ```
 
-In the background, the schema directives analyze our types and create propper links, when we have a `field` present,
-that's going to be a main link, that's the collection we are going to store it in, when we have `to` present,
-that's going to be an inversed link.
+In the background, the schema directives analyze our types and create propper links, when we have a `field` present, that's going to be a main link, that's the collection we are going to store it in, when we have `to` present, that's going to be an inversed link.
 
-Direct fields are automatically indexed by default.
+Direct fields are automatically indexed by default. You don't have to specify `index: true`
+
+Options to direct links:
+
+```js
+@map(field: "linkStorageField", autoremove: true, unique: true, metadata: true)
+```
+
+For more information about options, refer to [Grapher API](https://github.com/cult-of-coders/grapher/blob/master/docs/api.md#adding-links)
 
 Each `ObjectType` needs to have the propper `@mongo` directive to work.
 
-The `@map` directive makes a database field be aliased. The reason for this is that when we query with Grapher's
-GraphQL abilities to properly adapt that field to the correspondant db field. In the backscene, we basically have a `reducer`.
+The `@map` directive makes a database field be aliased. The reason for this is that when we query with Grapher's GraphQL abilities to properly adapt that field to the correspondant db field. In the backscene, we basically have a `reducer`.
 
 ## Usage
 

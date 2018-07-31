@@ -69,20 +69,23 @@ export default class LinkDirective extends SchemaDirectiveVisitor {
 
     let config = {};
     if (args.to) {
-      config = {
-        inversedBy: args.to,
-      };
+      config = Object.assign({}, args);
+      config.inversedBy = args.to;
+      delete config.to;
     } else {
       if (args.field) {
-        config = {
-          type: isArrayField ? 'many' : 'one',
-          field: args.field,
-          index: true,
-        };
+        config = Object.assign(
+          {
+            type: isArrayField ? 'many' : 'one',
+            field: args.field,
+            index: true,
+          },
+          args
+        );
       } else {
         throw new Meteor.Error(
           `invalid-args`,
-          `You have provided invalid arguments for this specification`
+          `You have provided invalid arguments for this link in ${thisCollectionName}. The "field" property is missing.`
         );
       }
     }
