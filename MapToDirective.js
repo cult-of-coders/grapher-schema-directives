@@ -39,7 +39,7 @@ export default class MapToDirective extends SchemaDirectiveVisitor {
           [args.to]: 1,
         },
         reduce(obj) {
-          return resolve(args.to, object);
+          return resolve(args.to, obj);
         },
       },
     });
