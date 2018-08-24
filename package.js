@@ -1,6 +1,6 @@
 Package.describe({
   name: 'cultofcoders:grapher-schema-directives',
-  version: '0.1.7',
+  version: '0.1.8',
 
   // Brief, one-line summary of the package.
   summary: 'Grapher and GraphQL Schema Directives',
@@ -16,7 +16,6 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.3');
   api.use('ecmascript');
-  api.use('cultofcoders:grapher@1.3.3');
   api.mainModule('index.js', 'server');
 });
 
