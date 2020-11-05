@@ -14,6 +14,13 @@ export default class MongoDirective extends SchemaDirectiveVisitor {
     setupMongoDirective(type, this.args);
   }
 
+  /**
+   * @param {GraphQLObjectType} type
+   */
+  visitInterface(type) {
+    return this.visitObject(type);
+  }
+
   visitFieldDefinition() {}
 }
 
