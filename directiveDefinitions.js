@@ -1,7 +1,7 @@
 export default `
   directive @mongo(
     name: String!
-  ) on OBJECT | FIELD_DEFINITION
+  ) on OBJECT | INTERFACE | FIELD_DEFINITION
 
   directive @link(
     field: String
